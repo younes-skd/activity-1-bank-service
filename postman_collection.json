@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "activity-1-bank-service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    }
+  ],
+  "item": [
+    {
+      "name": "List accounts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/comptes"
+      }
+    },
+    {
+      "name": "Create account",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/comptes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"balance\": 1000,\n  \"currency\": \"MAD\",\n  \"type\": \"CURRENT\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Projection",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/data/comptes?projection=summary"
+      }
+    },
+    {
+      "name": "GraphQL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/graphql",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"{ comptes { id balance currency type } }\"\n}"
+        }
+      }
+    }
+  ]
+}
