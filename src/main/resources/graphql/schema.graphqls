@@ -1,0 +1,5 @@
+enum AccountType { CURRENT SAVING }
+type Compte { id: ID!, createdAt: String!, balance: Float!, currency: String!, type: AccountType! }
+input CompteInput { balance: Float!, currency: String!, type: AccountType! }
+type Query { comptes: [Compte!]!, compte(id: ID!): Compte }
+type Mutation { createCompte(input: CompteInput!): Compte!, updateCompte(id: ID!, input: CompteInput!): Compte!, deleteCompte(id: ID!): Boolean! }
